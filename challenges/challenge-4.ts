@@ -15,15 +15,15 @@ export function getResistorValue(firstColorBand: string, secondColorBand: string
             break;
         case multiplier < 6 || multiplier - 3 === 0:
             prefix = 'kil';
-            multiplier = multiplier - 3
+            multiplier -= 3
             break;
         case multiplier < 9 || multiplier - 6 === 0:
             prefix = 'mega';
-            multiplier = multiplier - 6
+            multiplier -= 6
             break;
         case multiplier < 12 || multiplier - 9 === 0:
             prefix = 'giga';
-            multiplier = multiplier - 9
+            multiplier -= 9
             break;
         default:
             return 'NaN';
