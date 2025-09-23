@@ -14,28 +14,29 @@
 // 6, 6, 6, 6: You discard the 6 and sum 6 + 6 + 6 = 18, which you assign to charisma.
 // Because constitution is 3, the constitution modifier is -4 and the hitpoints are 6.
 
-type Ability = Record<string, number>;
-const listOfAbilities = ['strength'];//, 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
+const listOfAbilities = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
 
-export function generateCharacter(): Array<Ability> {
-    let abilities: Array<Ability> = [];
-
+export function generateCharacter(): Record<string, number> {
+    let abilities: Record<string, number> = {};
 
     listOfAbilities.forEach(name => { 
-        let results = [];
-        for (let times = 1; times <= 4; times++) {
-            results.push(throwDice());
-        }
-        results.sort((a, b) => b - a); // sort descending
-        results.pop();
-
-        let abilityValue = results.reduce((previousVal, currentVal) =>  previousVal + currentVal, 0);
-        
-        let ability: Ability = {[name]: abilityValue};
-        abilities.push(ability);
+        abilities[name] = calculateScore();
     });
 
+    abilities['constitution'] = Math.floor((abilities['constitution'] - 10) / 2);
+
     return abilities;
+}
+
+export const calculateScore = (): number => {
+    let results = [];
+    for (let times = 1; times <= 4; times++) {
+        results.push(throwDice());
+    }
+
+    results.sort((a, b) => b - a); // sort descending
+    results.pop();
+    return results.reduce((previousVal, currentVal) =>  previousVal + currentVal, 0);
 }
 
 export const throwDice = (): number => {
