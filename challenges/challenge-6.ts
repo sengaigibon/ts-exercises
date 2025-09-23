@@ -1,12 +1,8 @@
 export function getRnaComplement(dna: string): string {
-    if (dna.length > 4 || dna.length < 4) {
-        return '';
-    }
-
     dna = dna.toUpperCase();
     let rnaSequence: string = '';
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < dna.length; i++) {
         switch(dna[i]) {
             case 'G':
                 rnaSequence += 'C';

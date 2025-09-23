@@ -24,5 +24,6 @@ describe ("Determine the RNA complement of a given DNA sequence.", () => {
     test("Check RNA complement diven a DNA sequence", () => {
         expect(getRnaComplement('GCTA')).toBe('CGAU');
         expect(getRnaComplement('TACG')).toBe('AUGC');
+        expect(getRnaComplement('CATGGCTACCA')).toBe('GUACCGAUGGU');
     });
 });
