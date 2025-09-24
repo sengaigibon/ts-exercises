@@ -14,7 +14,7 @@
 // 6, 6, 6, 6: You discard the 6 and sum 6 + 6 + 6 = 18, which you assign to charisma.
 // Because constitution is 3, the constitution modifier is -4 and the hitpoints are 6.
 
-const listOfAbilities = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
+const listOfAbilities = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma', 'hitpoints'];
 
 export function generateCharacter(): Record<string, number> {
     let abilities: Record<string, number> = {};
@@ -24,6 +24,7 @@ export function generateCharacter(): Record<string, number> {
     });
 
     abilities['constitution'] = Math.floor((abilities['constitution'] - 10) / 2);
+    abilities['hitpoints'] = 10 + abilities['constitution'];
 
     return abilities;
 }

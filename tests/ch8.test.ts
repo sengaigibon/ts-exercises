@@ -21,6 +21,7 @@ describe ("Randomly generate Dungeons & Dragons characters", () => {
     test("List of abilities is complete", () => {
         let characterAbilities = challenge.generateCharacter();
 
+        expect(characterAbilities).toHaveProperty('hitpoints');
         expect(characterAbilities).toHaveProperty('strength');
         expect(characterAbilities).toHaveProperty('dexterity');
         expect(characterAbilities).toHaveProperty('constitution');
@@ -40,6 +41,7 @@ describe ("Randomly generate Dungeons & Dragons characters", () => {
         
         let characterAbilities = challenge.generateCharacter();
 
+        expect(characterAbilities['hitpoints']).toBe(10 + characterAbilities['constitution']);
         expect(characterAbilities['strength']).toBe(14);
         expect(characterAbilities['dexterity']).toBe(11);
         expect(characterAbilities['constitution']).toBe(-4);
