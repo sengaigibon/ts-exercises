@@ -1,4 +1,4 @@
-import { getResistorValue } from "../challenges/challenge-4";
+import { getResistorValue } from "../exercises/easy/challenge-4";
 
 const orange: string = 'orange';
 const black: string = 'black';

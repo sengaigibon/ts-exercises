@@ -1,4 +1,4 @@
-import { getAge, getAge2, secondsInEarthYear } from "../challenges/challenge-7";
+import { getAge, getAge2, secondsInEarthYear } from "../exercises/easy/challenge-7";
 
 describe ("Determine the age of an earthling on other planets.", () => {
     test("Given an age in seconds, calculate the age on a given planet", () => {

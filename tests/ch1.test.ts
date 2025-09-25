@@ -1,4 +1,4 @@
-import type { HelloWorld } from "../challenges/challenge-1"
+import type { HelloWorld } from "../exercises/easy/challenge-1"
 
 
 describe ('Challenge 1 - type check', () => {

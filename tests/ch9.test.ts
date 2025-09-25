@@ -1,4 +1,4 @@
-import { calculateScore } from '../challenges/challenge-9';
+import { calculateScore } from '../exercises/easy/challenge-9';
 
 describe('Calculate the points scored in a single toss of a Darts game, given an x,y point in the target', () => {
     test('dart lands outside the target', () => {

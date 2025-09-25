@@ -1,4 +1,4 @@
-import { bobsAnswerTo } from "../challenges/challenge-11";
+import { bobsAnswerTo } from "../exercises/easy/challenge-11";
 
 describe ("Bob's answers to different sentences", () => {
     test('he answers "Sure"', () => {

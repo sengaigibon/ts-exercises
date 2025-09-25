@@ -1,4 +1,4 @@
-import { oneFor } from "../challenges/challenge-2";
+import { oneFor } from "../exercises/easy/challenge-2";
 
 describe ("Solves challenge 2", () => {
     test("given a name, returns 'One for {name}, one for me'", () => {

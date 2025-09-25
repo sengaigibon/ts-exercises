@@ -1,4 +1,4 @@
-import { isPangram } from "../challenges/challenge-10";
+import { isPangram } from "../exercises/easy/challenge-10";
 
 describe("Figure out if a sentence is a pangram", () => {
     test("sentece is a pangram", () => {

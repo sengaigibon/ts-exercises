@@ -1,4 +1,4 @@
-import { isLeapYear } from "../challenges/challenge-5";
+import { isLeapYear } from "../exercises/easy/challenge-5";
 
 describe ("Determine whether a given year is a leap year.", () => {
     test("Check if given year is leap or not", () => {

@@ -1,4 +1,4 @@
-import * as challenge from '../challenges/challenge-8';
+import * as challenge from '../exercises/easy/challenge-8';
 
 describe ("Randomly generate Dungeons & Dragons characters", () => {
     test("Simple mocking test", () => {

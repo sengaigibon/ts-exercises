@@ -1,4 +1,4 @@
-import { getRnaComplement } from "../challenges/challenge-6";
+import { getRnaComplement } from "../exercises/easy/challenge-6";
 
 /**
  * Instructions
