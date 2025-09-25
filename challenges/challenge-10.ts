@@ -10,11 +10,15 @@ export function isPangram(sentence: string): boolean
 {
     sentence = sentence.toLowerCase();
 
-    for (let i = 0; i < alphabet.length; i++) {
-        if (!sentence.includes(alphabet[i])) {
+    for (let letter of alphabet) {
+        if (!sentence.includes(letter)) {
             return false;
         }
     }
 
+    // another more efficient solution is:
+    // const uniqueLetters = new Set(sentence.match(/[a-z]/g));
+    // return uniqueLetters.size === 26;
+    
     return true;
 }
