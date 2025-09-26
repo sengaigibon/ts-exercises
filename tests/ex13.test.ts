@@ -13,7 +13,13 @@ describe('Check random robot names', () => {
         robotsBand.push(new Robot());
     }
 
-    test('verify format of robot names', () => {
+    test('robots have no name after they come off the factory', () => {
+        robotsBand.forEach((robot) => {
+            expect(robot.getName()).toBe('');
+        });
+    });
+
+    test('verify format of robot names after they are turned on', () => {
         robotsBand[1].turnOn();
         robotsBand[3].turnOn();
         robotsBand[5].turnOn();
@@ -38,7 +44,7 @@ describe('Check random robot names', () => {
         expect(uniqueNames.size).toBe(5); 
     });
 
-    test('verify names are unique, even after rebooting a robot', () => {
+    test('verify names are unique, even after reseting a robot', () => {
         robotsBand[7].resetToFactorySettings();
         robotsBand[9].resetToFactorySettings();
 
