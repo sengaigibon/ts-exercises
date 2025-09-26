@@ -1,34 +1,63 @@
-import { RobotFactory } from '../exercises/medium/excercise-13';
+import { RobotControl, Robot } from '../exercises/medium/excercise-13';
 
 describe('Check random robot names', () => {
 
     test('verify random name format', () => {
-        let randomName: string  = RobotFactory.generateRandomName();
+        let randomName: string  = RobotControl.generateRandomName();
         expect(randomName).toMatch(/[A-Z]{2}[0-9]{3}/);
     });
 
-    const factory = new RobotFactory(100);
+    let robotsBand: Robot[] = [];
+
+    for (let i = 0; i < 10; i++) {
+        robotsBand.push(new Robot());
+    }
 
     test('verify format of robot names', () => {
-        factory.getRobots().forEach((robotName) => {
-            expect(robotName).toMatch(/[A-Z]{2}[0-9]{3}/);
+        robotsBand[1].turnOn();
+        robotsBand[3].turnOn();
+        robotsBand[5].turnOn();
+
+        robotsBand.forEach((robot) => {
+            let name: string = robot.getName();
+            if (name) {
+                expect(name).toMatch(/[A-Z]{2}[0-9]{3}/);
+            }
         });
     });
 
     test('verify names are unique', () => {
-        let uniqueNames: Set<string> = new Set(factory.getRobots()); // it will remove duplications
-        expect(uniqueNames.size).toBe(100); // therefore, there must be 100 names
+        robotsBand[7].turnOn();
+        robotsBand[9].turnOn();
+
+        let robotNames: string[] = robotsBand.map((robot) => { return robot.getName() });
+        let uniqueNames: Set<string> = new Set(robotNames); // it will remove duplications
+
+        uniqueNames.delete('');
+
+        expect(uniqueNames.size).toBe(5); 
     });
 
     test('verify names are unique, even after rebooting a robot', () => {
-        let uniqueNames: Set<string> = new Set(factory.getRobots()); 
+        robotsBand[7].resetToFactorySettings();
+        robotsBand[9].resetToFactorySettings();
+
+        let robotNames: string[] = robotsBand.map((robot) => { return robot.getName() });
+
+        let uniqueNames: Set<string> = new Set(robotNames); 
+        uniqueNames.delete('');
+
         // variation of the previous way to test the same:
-        expect(uniqueNames).toHaveProperty('size', 100);
+        expect(uniqueNames).toHaveProperty('size', 5);
 
-        factory.rebootRobot(55);
-        factory.rebootRobot(10);
+        robotsBand[1].resetToFactorySettings();
+        robotsBand[5].resetToFactorySettings();
 
-        uniqueNames = new Set(factory.getRobots());
-        expect(uniqueNames).toHaveProperty('size', 100);
+        robotNames = robotsBand.map((robot) => { return robot.getName() });
+
+        uniqueNames = new Set(robotNames);
+        uniqueNames.delete('');
+
+        expect(uniqueNames).toHaveProperty('size', 5);
     });
 });

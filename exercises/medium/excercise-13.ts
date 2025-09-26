@@ -13,45 +13,49 @@
 // Using random names means a risk of collisions. 
 // Your solution must ensure that every existing robot has a unique name.
 
-export class RobotFactory {
+export class RobotControl {
     static ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     static MAX_NUM = 1000;
 
-    private robots: string[] = [];
+    private robotNames: string[] = [];
+    private static instance: RobotControl | null = null;
 
-    public constructor(amount: number) {
-        this.robots = this.buildRobots(amount);
-    }
-
-    public getRobots(): string[] {
-        return this.robots;
-    }
-
-    public rebootRobot(atPosition: number): void {
-        this.robots[atPosition] = this.buildRobots()[0];
-    }
-
-    private buildRobots(amount: number = 1): string[] {
-        let robots: string[] = []
-        for (let i = 0; i < amount; i++) {
-            let rName: string = '';
-            let index;
-            do {
-                rName = RobotFactory.generateRandomName();
-                index = robots.indexOf(rName);
-            } while (index >= 0);
-
-            robots.push(rName);
+    public static getInstance(): RobotControl {
+        if (!RobotControl.instance) {
+            RobotControl.instance = new RobotControl();
         }
+        return RobotControl.instance;
+    }
 
-        return robots;
+
+    public getRobotNames(): string[] {
+        return this.robotNames;
+    }
+
+    public resetRobot(name: string): string {
+        let index: number = this.robotNames.indexOf(name);
+        this.robotNames.splice(index)
+        return this.createUniqueName();
+    }
+
+    public createUniqueName(): string {
+        let rName: string = '';
+        let index;
+        do {
+            rName = RobotControl.generateRandomName();
+            index = this.robotNames.indexOf(rName);
+        } while (index >= 0);
+
+        this.robotNames.push(rName);
+
+        return rName;
     }
 
     public static generateRandomName(): string {
 
-        let pos1: string = RobotFactory.ALPHABET[Math.floor(Math.random() * RobotFactory.ALPHABET.length)];
-        let pos2: string = RobotFactory.ALPHABET[Math.floor(Math.random() * RobotFactory.ALPHABET.length)];
-        let number: number = Math.floor(Math.random() * RobotFactory.MAX_NUM);
+        let pos1: string = RobotControl.ALPHABET[Math.floor(Math.random() * RobotControl.ALPHABET.length)];
+        let pos2: string = RobotControl.ALPHABET[Math.floor(Math.random() * RobotControl.ALPHABET.length)];
+        let number: number = Math.floor(Math.random() * RobotControl.MAX_NUM);
         let numberStr: string;
 
         if (number < 10) {
@@ -64,5 +68,30 @@ export class RobotFactory {
 
         let rname = `${pos1}${pos2}${numberStr}`;
         return rname;
+    }
+}
+
+export class Robot {
+    private name: string = '';
+    private control: RobotControl;
+
+    public constructor() {
+        this.control = RobotControl.getInstance();
+    }
+
+    public getName(): string {
+        return this.name;
+    }
+
+    public setName(name: string): void {
+        this.name = name;
+    }
+
+    public turnOn(): void {
+        this.name = this.control.createUniqueName();
+    }
+
+    public resetToFactorySettings(): void {
+        this.name = this.control.resetRobot(this.name);
     }
 }
