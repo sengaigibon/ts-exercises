@@ -41,10 +41,6 @@ export class TrainRoute {
         this.tail = newStation;
     }
 
-    public closeStation(name: string) { //remove
-
-    }
-
     public getSize(): number {
         return 0;
     }
@@ -156,12 +152,10 @@ export class TrainRoute {
             return null;
         }
 
-        while (true) {
+        while (current) {
             if (current.name === name) {
                 return current
-            } else if (current.next === null) {
-                break;
-            }
+            } 
             
             current = current.next
         }
