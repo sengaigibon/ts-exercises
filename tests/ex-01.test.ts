@@ -1,4 +1,4 @@
-import { printMatrix } from '../exercises/medium/excercise-12';
+import { printMatrix } from '../exercises/medium/excercise-01';
 
 describe ('prints out rows and columns of a given matrix as string', () => {
     test('print matrix', () => {

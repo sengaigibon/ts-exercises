@@ -1,4 +1,4 @@
-import { find } from "../exercises/medium/excercise-17";
+import { find } from "../exercises/medium/excercise-03";
 
 // Implement a binary search algorithm.
 

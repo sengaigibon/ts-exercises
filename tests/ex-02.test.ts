@@ -1,4 +1,4 @@
-import { RobotControl, Robot } from '../exercises/medium/excercise-13';
+import { RobotControl, Robot } from '../exercises/medium/excercise-02';
 
 describe('Check random robot names', () => {
 
