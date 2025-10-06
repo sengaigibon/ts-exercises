@@ -1,4 +1,4 @@
-import { TrainRoute, TrainStation } from "../exercises/medium/excercise-18";
+import { TrainRoute, TrainStation } from "../exercises/medium/excercise-04";
 
 describe("double linked lists", () => {
     test("add at the beginning and travel in both directions", () => {
